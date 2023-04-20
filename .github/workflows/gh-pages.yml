@@ -22,3 +22,29 @@ jobs:
           branch: gh-pages
           folder: dist
           clean: true
+
+name: Publish Package to npmjs
+on: [push]
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   permissions:
+     contents: read
+     id-token: write
+   steps:
+     - uses: actions/checkout@v3
+     - uses: actions/setup-node@v3
+       with:
+         node-version: '16.x'
+         registry-url: 'https://registry.npmjs.org'
+     - run: npm install -g npm
+     - run: npm ci
+     - run: npm run build
+             uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
+       env:
+         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
