@@ -35,7 +35,7 @@
 }
 
 .page-header__logo {
-  margin-right: 0 20px 0 0;
+  margin: 0 20px 0 0;
 }
 
 .page-header__toggle {
@@ -190,8 +190,10 @@
 
 .page-header__main-nav--opened .page-header__site-menu-link:hover,
 .page-header__main-nav--opened .page-header__site-menu-link:focus {
-  opacity: 1;
-  color: rgba(0, 0, 0, 0.6);
+  @media (max-width: var.$mobile-width-only) {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.6);
+  }
 }
 
 .page-header__site-menu-link:active {
@@ -199,8 +201,10 @@
 }
 
 .page-header__main-nav--opened .page-header__site-menu-link:active {
-  opacity: 1;
-  color: rgba(0, 0, 0, 0.3);
+  @media (max-width: var.$mobile-width-only) {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 .page-header__site-menu-link--current {
